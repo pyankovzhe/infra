@@ -1,5 +1,43 @@
 # Infrastructure Repository
 
+## Ansible
+
+**Roles**
+
+Use roles to organize related configurations.
+
+Ansible galaxy init command initializes the base structure of a new role:
+```
+ansible-galaxy init role_name
+```
+
+**Playbooks**
+
+Include new playbooks in syte.yml.
+
+Default inventory file is environments/stage/hosts.
+
+Configure stage environment:
+```
+ansible-playbook site.yml
+```
+If you want configure prod environmet, you must specify inventory file:
+```
+ansible-playbook site.yml -i environments/prod/hosts
+```
+
+Check playbooks(dry run):
+```
+ansible-playbook site.yml --check
+```
+**group_vars  & host_vars**
+
+Place files with variables inside these directories named after the group name or
+hostname defined in your inventory file.
+
+**provisioners**
+
+packer_reddit_app and packer_reddit_db playbooks are used to create pre-baked images with Packer.
 ## Terraform
 
 ### Use Terraform for building, changing and versioning infrastructure
@@ -28,7 +66,7 @@ Validate packer template ubuntu16.json
 packer validate -var 'project_id=example-project' -var 'source_image=ubuntu-1604-xenial-v20170815a' ubuntu16.json
 ```
 
-Discover what variables the template accepts. 
+Discover what variables the template accepts.
 ```sh
 packer inspect ubuntu16.json
 ```
