@@ -7,3 +7,4 @@
 
 .vagrant/
 *.log
+ansible/infra-env/

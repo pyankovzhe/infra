@@ -38,6 +38,21 @@ hostname defined in your inventory file.
 **provisioners**
 
 packer_reddit_app and packer_reddit_db playbooks are used to create pre-baked images with Packer.
+
+**Testing**
+```
+  virtualenv infra-env
+```
+infra-env directory is a virtual environment created by virtualenv.
+To begin using the virtual environment, it needs to be activated:
+```
+  source infra-env/bin/activate
+```
+
+If you are done working in the virtual environment for the moment, you can deactivate it:
+```
+  deactivate
+```
 ## Terraform
 
 ### Use Terraform for building, changing and versioning infrastructure
