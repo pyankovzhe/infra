@@ -21,9 +21,13 @@ Configure stage environment:
 ```
 ansible-playbook site.yml
 ```
+Skip tags 'install' and 'ruby', when using pre-baked packer images:
+```
+ansible-playbook site.yml --skip-tags "install,ruby"
+```
 If you want configure prod environmet, you must specify inventory file:
 ```
-ansible-playbook site.yml -i environments/prod/hosts
+ansible-playbook site.yml -i environments/prod/hosts --skip-tags "install,ruby"
 ```
 
 Check playbooks(dry run):
@@ -37,21 +41,36 @@ hostname defined in your inventory file.
 
 **provisioners**
 
-packer_reddit_app and packer_reddit_db playbooks are used to create pre-baked images with Packer.
+packer_app and packer_db playbooks are used to create pre-baked images with Packer.
 
 **Testing**
-```
-  virtualenv infra-env
-```
-infra-env directory is a virtual environment created by virtualenv.
-To begin using the virtual environment, it needs to be activated:
-```
-  source infra-env/bin/activate
-```
+Using virtualenv with virtualenvwrapper
+http://docs.python-guide.org/en/latest/dev/virtualenvs/
 
-If you are done working in the virtual environment for the moment, you can deactivate it:
+Create test environment with vagrant
 ```
-  deactivate
+vagrant up
+```
+In directory with roles.
+Example of initializing new scenatio for role:
+```
+molecule init scenario --scenario-name default -r db -d vagrant
+```
+Create test vm:
+```
+molecule create
+```
+List testing vms:
+```
+molecule list
+```
+Apply playbooks for test vms:
+```
+molecule converge
+```
+Run tests:
+```
+molecule verify
 ```
 ## Terraform
 
