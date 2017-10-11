@@ -1,6 +1,13 @@
-*.retry
 *.tfstate
 *.tfstate.*.backup
 *.tfstate.backup
 *.tfvars
 .terraform/
+
+.vagrant/
+*.log
+
+*.retry
+*.pyc
+ansible/roles/db/molecule/default/.cache
+ansible/roles/db/molecule/default/.molecule
