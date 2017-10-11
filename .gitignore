@@ -1,4 +1,3 @@
-*.retry
 *.tfstate
 *.tfstate.*.backup
 *.tfstate.backup
@@ -7,4 +6,8 @@
 
 .vagrant/
 *.log
-ansible/infra-env/
+
+*.retry
+*.pyc
+ansible/roles/db/molecule/default/.cache
+ansible/roles/db/molecule/default/.molecule
